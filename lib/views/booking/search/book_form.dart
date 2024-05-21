@@ -1,4 +1,3 @@
-import 'package:dofy/constants/routes.dart';
 import 'package:dofy/constants/theme.dart';
 import 'package:dofy/widgets/components/custom_textfield.dart';
 import 'package:dofy/widgets/components/gradient_button.dart';
@@ -92,7 +91,7 @@ class BookingForm extends StatelessWidget {
                           icon: Icons.person,
                           iconColor: AppTheme.formIconColor,
                           value: nbrPassenger,
-                          content: 'Passagers',
+                          content: '(1) Passagers',
                           function: choisirPassager,
                         ),
                       ),
@@ -105,12 +104,7 @@ class BookingForm extends StatelessWidget {
                   Center(
                     child: GradientButton(
                       buttonText: 'Search Tickets',
-                      onPressed: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          ticketsResultsRoute,
-                          (route) => false,
-                        );
-                      },
+                      onPressed: searchTickets,
                       height: 50,
                       width: MediaQuery.sizeOf(context).width * 0.8,
                     ),

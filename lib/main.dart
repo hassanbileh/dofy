@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         homePageView: (context) => const HomePageView(),
         bookingPageView: (context) => const BookingPageView(),
         resetPassordRoute: (context) => const ForgetPasswordView(),
+        ticketsResultsRoute: (context) => const TicketResults(),
       },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );

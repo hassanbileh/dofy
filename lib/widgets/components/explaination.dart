@@ -1,4 +1,3 @@
-import 'package:dofy/constants/theme.dart';
 import 'package:flutter/material.dart';
 
 class Explaination extends StatelessWidget {
@@ -19,12 +18,12 @@ class Explaination extends StatelessWidget {
       children: [
         Icon(
           icon,
-          color: AppTheme.formIconColor,
+          color: Colors.grey[600],
           size: 30,
         ),
         Container(
           width: MediaQuery.sizeOf(context).width * 0.8,
-          margin: const EdgeInsets.only(left: 10.0, right: 10.0, top: 8.0),
+          margin: const EdgeInsets.only(left: 15.0, right: 10.0, top: 8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,10 +31,9 @@ class Explaination extends StatelessWidget {
                 title,
                 style: const TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 5.0,),
               Text(
                 text,
                 style: const TextStyle(

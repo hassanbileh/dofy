@@ -1,3 +1,7 @@
+import 'package:dofy/constants/routes.dart';
+import 'package:dofy/data/hotel_data.dart';
+import 'package:dofy/utilities/dialogs/error_dialog.dart';
+import 'package:dofy/views/booking/search/hotel_list.dart';
 import 'package:dofy/views/screens.dart';
 import 'package:intl/intl.dart';
 import 'package:dofy/constants/theme.dart';
@@ -48,6 +52,18 @@ class _BookingPageViewState extends State<BookingPageView> {
     });
   }
 
+  void _searchTicket() async {
+    if (_depart.text.isEmpty ||
+        _arrivee.text.isEmpty ||
+        _selectedDate == null) {
+      return await showErrorDialog(context, "Vueillez remplir tous les champs");
+    }else{
+      Navigator.of(context).pushNamed(ticketsResultsRoute);
+    }
+
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,8 +78,9 @@ class _BookingPageViewState extends State<BookingPageView> {
             choisirPassager: () {},
             selectedDate: _selectedDate,
             nbrPassenger: _nbrPassenger,
-            searchTickets: () {},
+            searchTickets: _searchTicket,
           ),
+          const HotelList(hotels: HotelData.hotels),
           const BookingFooter(),
         ],
       ),

@@ -7,7 +7,7 @@ class BookingFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SliverPadding(
-      padding: EdgeInsets.only(top: 20.0),
+      padding: EdgeInsets.only(top: 10.0),
       sliver: SliverToBoxAdapter(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -17,11 +17,12 @@ class BookingFooter extends StatelessWidget {
             child: Text(
               "Comment ça marche",
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
+          SizedBox(height: 5.0,),
           Divider(),
           Explaination(
             icon: Icons.search,
@@ -31,7 +32,7 @@ class BookingFooter extends StatelessWidget {
           Explaination(
             icon: Icons.bookmark_added,
             title: 'Comparer',
-            text: 'Choisissez le plus rapide et le moins cher parmi nos 100+ partenaires.',
+            text: 'Choisissez le plus rapide et le moins cher parmi nos partenaires.',
           ),
           Explaination(
             icon: Icons.book_online_sharp,

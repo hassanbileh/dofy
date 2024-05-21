@@ -4,11 +4,11 @@ import 'package:dofy/utilities/dialogs/generic_dialog.dart';
 Future<bool> showLogOutDialog(BuildContext context) {
   return showGenericDialog(
     context: context,
-    title: 'Log Out',
-    content: 'Are you sure you want to log out ?',
+    title: 'Deconnexion',
+    content: 'Vous etes sure de vouloir vous deconnecter ?',
     optionsBuilder: () => {
-      'Cancel': false,
-      'Log out': true,
+      'Annuler': false,
+      'Deconnexion': true,
     },
   ).then((value) => value ?? false);
 }
