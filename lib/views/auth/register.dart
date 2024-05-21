@@ -1,4 +1,5 @@
 import 'package:dofy/constants/routes.dart';
+import 'package:dofy/constants/theme.dart';
 import 'package:dofy/states/cubits/cubits.dart';
 import 'package:dofy/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,7 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppTheme.backgroundColor,
       body: RegisterForm(
         icon: Icons.travel_explore,
         email: _email,

@@ -1,9 +1,12 @@
 import 'package:dofy/constants/routes.dart';
 import 'package:dofy/views/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show SystemChrome, DeviceOrientation;
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -26,6 +29,8 @@ class MyApp extends StatelessWidget {
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
         homePageView: (context) => const HomePageView(),
+        bookingPageView: (context) => const BookingPageView(),
+        resetPassordRoute: (context) => const ForgetPasswordView(),
       },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );

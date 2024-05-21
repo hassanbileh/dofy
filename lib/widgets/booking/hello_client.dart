@@ -34,13 +34,13 @@ class HelloClient extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hi Hasbile!',
+                    'Salut Hasbile!',
                     style: TextStyle(
                       fontSize: 16,
                     ),
                   ),
                   Text(
-                    'Where are you going ?',
+                    'Où voyager ?',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,

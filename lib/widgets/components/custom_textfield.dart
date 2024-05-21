@@ -1,3 +1,4 @@
+import 'package:dofy/constants/theme.dart';
 import 'package:flutter/material.dart';
 
 typedef OnSubmitted = void Function(String)?;
@@ -10,13 +11,15 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final String? labelText;
   final void Function()? checkVisibility;
+  final IconData? prefixIcon;
+  final Color? iconColor;
   final Widget? suffixIcon;
   final OnSubmitted? submit;
 
   const CustomTextField({
     super.key,
     required this.controller,
-    required this.icon,
+    this.icon,
     required this.hintText,
     required this.labelText,
     this.checkVisibility,
@@ -24,6 +27,8 @@ class CustomTextField extends StatelessWidget {
     this.isP,
     required this.kbType,
     this.suffixIcon,
+    this.prefixIcon,
+    this.iconColor,
   });
   @override
   Widget build(BuildContext context) {
@@ -33,7 +38,7 @@ class CustomTextField extends StatelessWidget {
         child: TextField(
           controller: controller,
           enableSuggestions: (kbType != TextInputType.emailAddress ||
-                  kbType != TextInputType.visiblePassword)
+                  isP != null)
               ? false
               : true,
           autocorrect: false,
@@ -41,17 +46,24 @@ class CustomTextField extends StatelessWidget {
           onSubmitted: submit,
           keyboardType: kbType,
           decoration: InputDecoration(
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(color: Colors.white),
             ),
             fillColor: Colors.grey.shade100,
             filled: true,
-            icon: Icon(
-              icon,
-              color: const Color.fromARGB(255, 74, 44, 156),
-            ),
+            icon: (prefixIcon != null)
+                ? null
+                : Icon(
+                    icon,
+                    color: AppTheme.iconColor,
+                  ),
             hintText: hintText,
             labelText: labelText,
+            prefixIcon: Icon(
+              prefixIcon,
+              color: (iconColor != null ) ? iconColor : AppTheme.iconColor,
+            ),
             suffixIcon: (isP != null && isP != false) ? suffixIcon : null,
           ),
         ),

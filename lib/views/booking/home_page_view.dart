@@ -1,9 +1,5 @@
-import 'package:dofy/constants/routes.dart';
 import 'package:dofy/constants/theme.dart';
-import 'package:dofy/enum/menu_action.dart';
-import 'package:dofy/utilities/dialogs/logout_dialog.dart';
-import 'package:dofy/widgets/widgets.dart';
-import 'dart:developer' as devtools show log;
+import 'package:dofy/views/screens.dart';
 import 'package:flutter/material.dart';
 
 class HomePageView extends StatefulWidget {
@@ -14,67 +10,64 @@ class HomePageView extends StatefulWidget {
 }
 
 class _HomePageViewState extends State<HomePageView> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    BookingPageView(),
+    Scaffold(
+      backgroundColor: AppTheme.backgroundColor,
+      body: Center(
+        child: Text('Recherche Ticket Page'),
+      ),
+    ),
+    Scaffold(
+      backgroundColor: AppTheme.backgroundColor,
+      body: Center(
+        child: Text('Settings Page'),
+      ),
+    ),
+  ];
+
+  final Map<String, IconData> _icons = {
+    'Home': Icons.home,
+    'Tickets': Icons.confirmation_num_rounded,
+    'Settings': Icons.settings,
+  };
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.backgroundColor,
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            stretch: true,
-            expandedHeight: MediaQuery.sizeOf(context).height * 0.1,
-            actions: [
-              PopupMenuButton<MenuAction>(
-                color: const Color.fromARGB(255, 74, 44, 156),
-                onSelected: (value) async {
-                  switch (value) {
-                    case MenuAction.logout:
-                      final shouldLogout = await showLogOutDialog(context);
-                      devtools.log(shouldLogout.toString());
-                      if (shouldLogout) {
-                        //? en cas de deconnexion
-                        // await AuthService.firebase().logOut();
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          loginRoute,
-                          (_) => false,
-                        );
-                      }
-                    default:
-                  }
-                },
-
-                // Menu Action builder
-                itemBuilder: (value) {
-                  return [
-                    //? Popup du menuItem
-                    const PopupMenuItem<MenuAction>(
-                      value: MenuAction.logout,
-                      child: Row(
-                        children: [
-                          Text(
-                            'Se deconnecter',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Icon(
-                            Icons.logout,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ];
-                },
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppTheme.backgroundColor,
+        type: BottomNavigationBarType.fixed,
+        items: _icons
+            .map(
+              (title, icon) => MapEntry(
+                title,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    icon,
+                    size: 30.0,
+                  ),
+                  label: title,
+                ),
               ),
-            ],
-            flexibleSpace: const FlexibleSpaceBar(
-              stretchModes: [StretchMode.fadeTitle],
-              background: HelloClient(),
-            ),
-          ),
-        ],
+            )
+            .values
+            .toList(),
+        currentIndex: _selectedIndex,
+        selectedFontSize: 11.0,
+        selectedItemColor: Colors.deepPurple[500],
+        unselectedItemColor: Colors.black45,
+        onTap: _onItemTapped,
       ),
     );
   }

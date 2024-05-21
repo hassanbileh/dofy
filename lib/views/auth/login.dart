@@ -1,4 +1,5 @@
 import 'package:dofy/constants/routes.dart';
+import 'package:dofy/constants/theme.dart';
 import 'package:dofy/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppTheme.backgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -50,11 +51,15 @@ class _LoginViewState extends State<LoginView> {
                     email: _email,
                     password: _password,
                     onSubmitted: (_) {},
-                    onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
-                          homePageView, (route) => false),
-                    inscription: () => Navigator.of(context)
+                    onPressed: () => Navigator.of(context)
                         .pushNamedAndRemoveUntil(
-                            registerRoute, (route) => false),
+                            homePageView, (route) => false),
+                    inscription: () =>
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                      registerRoute,
+                      (route) => false,
+                    ),
+                    forgotPassword: () => Navigator.of(context).pushNamed(resetPassordRoute),
                   ),
                 ],
               ),

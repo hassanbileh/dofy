@@ -1,8 +1,6 @@
 import 'package:dofy/widgets/components/custom_textfield.dart';
 import 'package:dofy/widgets/components/gradient_button.dart';
 import 'package:flutter/material.dart';
-
-import '../../constants/routes.dart';
 import '../../constants/text_field.dart';
 
 typedef OnSubmitted = void Function(String)?;
@@ -13,6 +11,7 @@ class LoginBody extends StatelessWidget {
   final TextEditingController password;
   final OnSubmitted? onSubmitted;
   final OnPressed onPressed;
+  final OnPressed forgotPassword;
   final OnPressed inscription;
   const LoginBody({
     super.key,
@@ -21,6 +20,7 @@ class LoginBody extends StatelessWidget {
     required this.onSubmitted,
     required this.onPressed,
     required this.inscription,
+    required this.forgotPassword,
   });
 
   @override
@@ -34,7 +34,7 @@ class LoginBody extends StatelessWidget {
           //Email textField
           CustomTextField(
             controller: email,
-            icon: Icons.email,
+            prefixIcon: Icons.email,
             hintText: "Entrer votre email ici",
             labelText: "Email",
             kbType: TextInputType.emailAddress,
@@ -43,7 +43,7 @@ class LoginBody extends StatelessWidget {
           //Password textfield
           CustomTextField(
             controller: password,
-            icon:Icons.key,
+            prefixIcon: Icons.key,
             hintText: "Entrer votre mot de passe",
             labelText: "Mot de passe",
             submit: onSubmitted,
@@ -56,9 +56,7 @@ class LoginBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(resetPassordRoute);
-                },
+                onPressed: forgotPassword,
                 child: Text(
                   'mot de passe oublié ?',
                   style:
