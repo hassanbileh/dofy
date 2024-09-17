@@ -1,10 +1,17 @@
 import 'package:dofy/constants/routes.dart';
+import 'package:dofy/firebase_options.dart';
 import 'package:dofy/views/screens.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChrome, DeviceOrientation;
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    name: DefaultFirebaseOptions.currentPlatform.projectId,
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) => runApp(const MyApp()));
 }

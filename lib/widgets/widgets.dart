@@ -6,3 +6,4 @@ export 'package:dofy/widgets/booking/hello_client.dart';
 export 'package:dofy/widgets/components/custom_button.dart';
 export 'package:dofy/widgets/components/explaination.dart';
 export 'package:dofy/widgets/booking/hotel_content.dart';
+export 'package:dofy/widgets/booking/ticket/classe_onticket.dart';

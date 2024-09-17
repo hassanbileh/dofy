@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "431913109575",
+    "project_id": "dofy-project",
+    "storage_bucket": "dofy-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431913109575:android:520377d6d3fdef094b8962",
+        "android_client_info": {
+          "package_name": "dj.dofy.dofy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE0e2DVFMCf66UQHPSh_bUY6W2VDov0F4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

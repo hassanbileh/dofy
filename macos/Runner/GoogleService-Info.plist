@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyApozSi9IY6fi81c4EZVH70_qIhCXjTGdI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>431913109575</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>dj.dofy.dofy.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>dofy-project</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dofy-project.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:431913109575:ios:a72a9b93a00d54174b8962</string>
+</dict>
+</plist>

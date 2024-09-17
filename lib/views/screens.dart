@@ -7,3 +7,4 @@ export 'package:dofy/views/booking/search/home_appbar.dart';
 export 'package:dofy/views/booking/search/book_form.dart';
 export 'package:dofy/views/booking/tickets/ticket_results.dart';
 export 'package:dofy/views/booking/search/book_footer.dart';
+export 'package:dofy/views/booking/tickets/tickets_list.dart';
