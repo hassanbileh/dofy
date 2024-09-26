@@ -3,6 +3,7 @@ import 'package:dofy/constants/theme.dart';
 import 'dart:developer' as devtools show log;
 import 'package:dofy/enum/menu_action.dart';
 import 'package:dofy/utilities/dialogs/logout_dialog.dart';
+import 'package:dofy/services/auth/auth_services.dart';
 import 'package:dofy/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,7 @@ class HomeAppBar extends StatelessWidget {
                       devtools.log(shouldLogout.toString());
                       if (shouldLogout) {
                         //? en cas de deconnexion
-                        // await AuthService.firebase().logOut();
+                        await AuthService.firebase().logOut();
                         Navigator.of(context).pushNamedAndRemoveUntil(
                           loginRoute,
                           (_) => false,

@@ -3,6 +3,7 @@ export 'package:dofy/views/auth/register.dart';
 export 'package:dofy/views/booking/home_page_view.dart';
 export 'package:dofy/views/booking/search/booking_view.dart';
 export 'package:dofy/views/auth/forget_pwd.dart';
+export 'package:dofy/views/auth/verify_email.dart';
 export 'package:dofy/views/booking/search/home_appbar.dart';
 export 'package:dofy/views/booking/search/book_form.dart';
 export 'package:dofy/views/booking/tickets/ticket_results.dart';

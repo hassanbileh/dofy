@@ -1,5 +1,6 @@
 import 'package:dofy/constants/routes.dart';
 import 'package:dofy/firebase_options.dart';
+import 'package:dofy/services/auth/auth_services.dart';
 import 'package:dofy/views/screens.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/services.dart' show SystemChrome, DeviceOrientation;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    name: DefaultFirebaseOptions.currentPlatform.projectId,
+    // name: DefaultFirebaseOptions.currentPlatform.projectId,
     options: DefaultFirebaseOptions.currentPlatform,
   );
   
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       routes: {
         loginRoute: (context) => const LoginView(),
         registerRoute: (context) => const RegisterView(),
+        verifyEmailRoute: (context) => const VerificationEmail(),
         homePageView: (context) => const HomePageView(),
         bookingPageView: (context) => const BookingPageView(),
         resetPassordRoute: (context) => const ForgetPasswordView(),
@@ -57,8 +59,28 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: LoginView(),
+    return FutureBuilder(
+      future: AuthService.firebase().initialise(),
+      builder: (ctx, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.none:
+            return const Text('Error');
+          case ConnectionState.done:
+            final user = AuthService.firebase().currentUser;
+            //? Verifier si le user est connecté
+            if (user != null) {
+              if (user.isEmailVerified) {
+                return const HomePageView();
+              } else{
+                return const VerificationEmail();
+              }
+            } else {
+              return const LoginView();
+            }
+          default:
+            return const CircularProgressIndicator.adaptive();
+        }
+      },
     );
   }
 }
